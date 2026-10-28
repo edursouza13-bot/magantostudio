@@ -1,0 +1,12 @@
+{
+  "name": "magnatto-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Magnatto Studio - compartilhamento de tela em tempo real",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "node server.js" },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

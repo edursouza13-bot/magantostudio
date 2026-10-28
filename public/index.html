@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Magnatto Studio — compartilhe sua tela em tempo real.">
+  <title>MAGNATTO STUDIO — Compartilhe em tempo real</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Magnatto Studio início">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span>MAGNATTO<span class="pink">.</span><b>SCREEN</b></span>
+    </a>
+    <nav><a href="#como-funciona">Como funciona</a><a href="#sala">Salas</a></nav>
+    <span class="live-pill"><span></span> CONEXÃO EM TEMPO REAL</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> MAGNATTO STUDIO / LIVE CONNECTION</div>
+        <h1>Sua tela.<br><span class="gradient-text">Sua conexão.</span></h1>
+        <p class="hero-desc">Compartilhe cada detalhe. Conecte sua equipe. Tudo em uma sala, direto do navegador.</p>
+        <div class="hero-stats">
+          <div><strong>01</strong><span>Crie uma sala</span></div>
+          <div><strong>02</strong><span>Envie o link</span></div>
+          <div><strong>03</strong><span>Conecte ao vivo</span></div>
+        </div>
+        <a class="primary-btn" href="#sala">Começar agora <span>↗</span></a>
+      </div>
+      <div class="hero-art" aria-label="Arte abstrata Nexus">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="nexus-symbol"><span>N</span><i>✳</i></div>
+        <div class="art-caption"><span class="signal-dot"></span> LOW LATENCY / P2P READY</div>
+        <div class="art-label label-top">MGS / 001</div><div class="art-label label-bottom">SHARE WITHOUT LIMITS</div>
+      </div>
+    </section>
+
+    <section id="sala" class="room-section">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> SEU PONTO DE ENCONTRO</div><h2>Vamos conectar<span class="pink">?</span></h2></div>
+        <p>Uma sala. Sua equipe.<br>Sem complicação.</p>
+      </div>
+      <div class="room-card">
+        <div class="room-tabs">
+          <button class="tab active" data-tab="create">＋ Criar sala</button>
+          <button class="tab" data-tab="join">↗ Entrar em uma sala</button>
+        </div>
+        <form id="room-form">
+          <label for="nickname">Como podemos chamar você?</label>
+          <input id="nickname" maxlength="24" placeholder="Seu nickname" autocomplete="nickname" required>
+          <div class="form-row">
+            <div class="field grow"><label for="room-name" id="room-label">Nome da sala</label><input id="room-name" maxlength="24" placeholder="Ex.: Nexus Design" required></div>
+            <div class="field color-field"><label for="user-color">Sua cor</label><div class="color-wrap"><input id="user-color" type="color" value="#D9FF45"><span>Personalizar</span></div></div>
+          </div>
+          <div id="room-code-wrap" class="field hidden"><label for="room-code">Código ou nome da sala</label><input id="room-code" maxlength="24" placeholder="Ex.: MAGNATTO-7K2Q"></div>
+          <div class="preference"><div><span class="pref-icon">⌁</span><span><b>Transmissão otimizada</b><small>Qualidade adaptável à sua conexão</small></span></div><span class="pref-badge">WEBRTC</span></div>
+          <button class="primary-btn full" type="submit" id="submit-room">Criar minha sala <span>↗</span></button>
+          <p class="privacy-note">♢ Sua tela só é transmitida com sua permissão.</p>
+        </form>
+        <div id="room-status" class="status hidden" role="status"></div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace hidden">
+      <div class="workspace-head">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> SALA ATIVA</div><h2 id="active-room-title">Sua sala</h2><p id="active-room-sub">Compartilhe o link com seus amigos.</p></div>
+        <div class="room-actions"><button id="copy-link" class="secondary-btn">⧉ Copiar convite</button><button id="leave-room" class="danger-btn">Sair da sala</button></div>
+      </div>
+      <div class="workspace-grid">
+        <div class="screen-panel">
+          <div class="panel-top"><span><i class="signal-dot"></i> TRANSMISSÃO AO VIVO</span><span id="screen-state">AGUARDANDO TELA</span></div>
+          <div id="videos" class="videos"><div class="empty-screen"><div class="screen-icon">▣</div><h3>Nenhuma tela por aqui ainda</h3><p>Inicie o compartilhamento para mostrar sua tela aos participantes.</p></div></div>
+          <div class="screen-controls"><button id="start-share" class="primary-btn">▣ Compartilhar minha tela</button><button id="stop-share" class="secondary-btn hidden">■ Parar transmissão</button><label class="audio-toggle"><input id="share-audio" type="checkbox"> Incluir áudio (quando disponível)</label></div>
+        </div>
+        <aside class="participants-panel"><div class="panel-top"><span>PARTICIPANTES</span><span id="participant-count">1 / 8</span></div><div id="participants" class="participants"></div><div class="invite-box"><b>Convide sua equipe</b><p>Envie o link para entrar nesta sala.</p><button id="copy-link-2" class="secondary-btn full">Copiar link de convite ↗</button></div></aside>
+      </div>
+      <div class="collab-grid">
+        <section class="chat-panel">
+          <div class="panel-top"><span>CHAT DA SALA</span><span>AO VIVO</span></div>
+          <div id="chat-messages" class="chat-messages" aria-live="polite"><div class="chat-empty">As mensagens da sua equipe aparecem aqui.</div></div>
+          <form id="chat-form" class="chat-form"><input id="chat-input" maxlength="500" placeholder="Escreva uma mensagem..." autocomplete="off" aria-label="Mensagem para a sala"><button type="submit" aria-label="Enviar mensagem">↗</button></form>
+        </section>
+        <section class="reactions-panel">
+          <div class="panel-top"><span>REAÇÕES RÁPIDAS</span><span>✳</span></div>
+          <p>Reaja ao que está sendo compartilhado.</p>
+          <div class="reaction-list"><button type="button" data-emoji="🔥" aria-label="Fogo">🔥</button><button type="button" data-emoji="💚" aria-label="Coração verde">💚</button><button type="button" data-emoji="😂" aria-label="Rindo">😂</button><button type="button" data-emoji="👏" aria-label="Palmas">👏</button><button type="button" data-emoji="👀" aria-label="Olhos">👀</button><button type="button" data-emoji="💜" aria-label="Coração roxo">💜</button></div>
+          <div id="reaction-feed" class="reaction-feed" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="features">
+      <div class="eyebrow"><span class="eyebrow-line"></span> FEITO PARA CONECTAR</div>
+      <h2>Seu fluxo. <span class="gradient-text">Sem interrupções.</span></h2>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-num">01 /</span><div class="feature-icon lime">↗</div><h3>Compartilhe fácil</h3><p>Crie sua sala e envie um único link. Seus convidados entram pelo navegador, sem instalar programa.</p></article>
+        <article class="feature-card"><span class="feature-num">02 /</span><div class="feature-icon pink-icon">⌁</div><h3>Baixa latência</h3><p>A transmissão usa WebRTC para conectar os navegadores diretamente sempre que a rede permitir.</p></article>
+        <article class="feature-card"><span class="feature-num">03 /</span><div class="feature-icon purple">◈</div><h3>Você no controle</h3><p>Escolha o que compartilhar e pare a transmissão quando quiser. O navegador sempre pede sua permissão.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand" href="/"><span class="brand-mark"><i></i><i></i><i></i></span><span>MAGNATTO<span class="pink">.</span><b>SCREEN</b></span></a><span>MAGNATTO STUDIO / UMA NOVA FORMA DE CONECTAR.</span></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
